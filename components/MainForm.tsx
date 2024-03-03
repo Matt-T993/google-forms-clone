@@ -21,6 +21,30 @@ import SubmitButton from "./SubmitButton";
 import { useFormState } from "react-dom";
 import { addFormData } from "@/lib/actions";
 
+interface IFormAttribute {
+  marker: string;
+  localizeInfos: {
+    title: string;
+  };
+  listTitles: IListTitle[];
+  validators?: {
+    requiredValidator?: {
+      strict: boolean;
+    };
+    checkForNumberValidator?: {
+      minValue?: number;
+      maxValue?: number;
+    };
+  };
+  type: string; 
+}
+
+interface IListTitle {
+  value: string | number;
+  title: string;
+}
+
+
 const MainForm =({
   form,
   publicForm,
@@ -53,7 +77,7 @@ const MainForm =({
       {form.attributes.length > 0 ? (
         <form className="space-y-3.5" action={formAction}>
           <input type="hidden" name="identifier" value={form.identifier} />
-          {form.attributes.map((attr) => (
+          {form.attributes.map((attr: IFormAttribute) => (
             <Card key={attr.marker}>
               <CardContent className="grid w-full max-w-xl pt-6 items-center gap-1.5">
                 <Label htmlFor={attr.marker} className="text-base font-normal">

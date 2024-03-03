@@ -15,20 +15,33 @@ import {
   getResponses,
 } from "@/lib/utils";
 
+interface FormAttribute {
+  marker: string;
+  localizeInfos: {
+    title: string;
+  };
+
+}
+
+interface Question extends FormAttribute {
+  numberOfResponses: number;
+  responses: any[];
+}
+
 const ResponsesPage = async ({ params: { id } }: { params: { id: string } }) => {
   const formsData = await fetchAllFormsData();
   const form = await fetchFormById(id);
   const responses = getResponses(formsData, id);
 
 
-  const questions = form.attributes.map((attr) => ({
+  const questions = form.attributes.map((attr: FormAttribute) => ({
     ...attr,
     numberOfResponses: getNumberOfResponses(responses, attr.marker),
     responses: getIndividualResponses(responses, attr.marker),
   }));
   return (
     <div className="space-y-3.5">
-      {questions.map((question) => (
+      {questions.map((question: Question) => (
         <Card key={question.marker}>
           <CardHeader>
             <CardTitle className="font-normal text-base">
