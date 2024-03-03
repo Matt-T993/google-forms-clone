@@ -36,12 +36,13 @@ export const fetchFormById = async (id: string) => {
   }
 };
 
-  export const fetchAllFormsData = async () => {
-    try {
-      const formsData = await api.FormData.getFormsData;
-      return formsData;
-    } catch (error) {
-      console.error("Database Error", error);
-      throw new Error("Failed to fetch forms data.");
-    }
-  };
+export const fetchAllFormsData = async() => {
+  try {
+    const formsData = await api.FormData.getFormsData();
+
+    return formsData;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch forms data.");
+  }
+}

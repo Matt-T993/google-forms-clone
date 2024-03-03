@@ -1,7 +1,7 @@
 import { fetchAllForms } from "@/lib/data";
 import FormCard from "./FormCard";
 
-async function FormList() {
+const FormList = async () => {
   const forms = await fetchAllForms();
 
   return (

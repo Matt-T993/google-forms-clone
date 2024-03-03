@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { AccessibilityIcon, BarChartIcon, CogIcon } from "lucide-react";
 
 const features = [
@@ -36,7 +37,12 @@ export default function Home({
   searchParams: { error?: string };
 }) {
   return (
-    <main >
+    <main
+      className={cn(
+        "flex flex-col items-center justify-center min-h-screen p-6",
+        error ? "bg-gray-100" : "bg-background"
+      )}
+    >
       {error ? (
         <AccessDenied />
       ) : (
