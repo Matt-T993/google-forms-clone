@@ -26,14 +26,22 @@ export const fetchAllForms = async () => {
   }
 };
 
-export const fetchFormById = async(id: string) => {
-  try{
-    const formData = await api.Forms.getFormByMarker(id)
+export const fetchFormById = async (id: string) => {
+  try {
+    const formData = await api.Forms.getFormByMarker(id);
     return formData;
   } catch (error) {
-      console.error("Datanase Error:", error);
-      throw new Error("Failed to fetch form");
-    }
+    console.error("Datanase Error:", error);
+    throw new Error("Failed to fetch form");
   }
+};
 
-
+  export const fetchAllFormsData = async () => {
+    try {
+      const formsData = await api.FormData.getFormsData;
+      return formsData;
+    } catch (error) {
+      console.error("Database Error", error);
+      throw new Error("Failed to fetch forms data.");
+    }
+  };

@@ -18,7 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs,  TabsList, TabsTrigger } from "@/components/ui/tabs";
 import LinkTabContent from "./LinkTabContent";
 
 
@@ -36,7 +36,7 @@ const SendForm = () => {
         <div>
           <IconButton Icon={Send} className="md:hidden" />
           <Button
-            variant={"outline"}
+            variant={"brand"}
             size={"sm"}
             className="px-6 hidden md:inline"
           >
